@@ -1,62 +1,52 @@
-import React from 'react';
+
 import type ITechnology from '../../types/type';
+
 
 const TechnologieCard = ({ technology }: { technology: ITechnology }) => {
     return (
-        <div className="group bg-white border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-            {/* Top section */}
-            <div className="flex items-start justify-between">
-                <div className="w-14 h-14 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center group-hover:bg-orange-50 transition">
+        <div className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-gray-100">
+            <div>
+                <div className="flex items-center justify-between gap-2">
                     <img
                         className="h-9 w-9 object-contain"
                         src={technology.icon}
                         alt={technology.name}
                     />
+
+                    <p className="text-sm font-medium text-gray-600 rounded-2xl bg-gray-100 px-3 py-1">
+                        {technology.badge}
+                    </p>
                 </div>
 
-                <span className="text-xs font-semibold text-purple-600 bg-purple-50 border border-purple-100 px-3 py-1 rounded-full">
-                    {technology.badge}
-                </span>
-            </div>
-
-            {/* Content */}
-            <div className="mt-5">
-                <h3 className="text-xl font-bold text-gray-900 group-hover:text-purple-600 transition">
+                <h3 className="font-bold text-lg mt-3 text-gray-900">
                     {technology.name}
                 </h3>
 
-                <p className="text-sm text-gray-500 mt-2 leading-6 line-clamp-2">
+                <p className="text-gray-600 mt-1 leading-6">
                     {technology.description}
                 </p>
             </div>
 
-            {/* Info */}
-            <div className="mt-5 pt-4 border-t border-gray-100">
-                <div className="flex items-center justify-between text-sm">
-                    <span className="px-3 py-1 rounded-full bg-blue-50 text-blue-600 font-medium">
-                        {technology.category}
-                    </span>
+            <div className="mt-4 flex justify-between items-center">
+                <p className="text-sm font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded-md">
+                    {technology.category}
+                </p>
 
-                    <span className="text-gray-500">
-                        {technology.difficulty}
-                    </span>
-                </div>
+                <p className="text-sm text-gray-500">
+                    {technology.difficulty}
+                </p>
 
-                <div className="flex items-center justify-between mt-4">
-                    <span className="text-sm text-gray-500">Rating</span>
-
-                    <span className="font-semibold text-gray-800">
-                        ⭐ {technology.rating}
-                    </span>
-                </div>
+                <p className="font-semibold text-gray-800">
+                    ⭐ {technology.rating}
+                </p>
             </div>
 
-            {/* Button */}
-            <button
-                className="w-full mt-5 bg-gray-900 hover:bg-gradient-to-r hover:from-orange-500 hover:to-purple-600 text-white font-semibold py-2.5 rounded-xl transition-all duration-300"
-            >
-                Add to Stack
-            </button>
+            <div className="flex justify-center">
+                <button className="mt-4 w-full bg-black hover:bg-gray-800 hover:scale-[1.02] text-white font-bold py-2 px-4 rounded-lg transition-all duration-300">
+                    Add to Stack
+                </button>
+            </div>
+            
         </div>
     );
 }
