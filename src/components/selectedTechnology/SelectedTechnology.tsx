@@ -3,7 +3,7 @@ import type ITechnology from "../../types/type";
 import SelectedTechnologyCard from "./SelectedTechnologyCard";
 
 interface ISelectedTechnology {
-  
+    technologies: ITechnology[];
     selectedTechnologies: ITechnology[];
     setSelectedTechnologies: Dispatch<React.SetStateAction<ITechnology[]>>;
 }

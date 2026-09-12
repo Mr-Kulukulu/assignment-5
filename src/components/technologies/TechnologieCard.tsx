@@ -1,4 +1,5 @@
 
+import { toast } from 'react-toastify';
 import type ITechnology from '../../types/type';
 
 interface TechnologieCardProps {
@@ -6,9 +7,13 @@ interface TechnologieCardProps {
     selectedTechnologies: ITechnology[];
     setSelectedTechnologies: React.Dispatch<React.SetStateAction<ITechnology[]>>;
 }
-const TechnologieCard = ({ technology,selectedTechnologies,setSelectedTechnologies }: TechnologieCardProps) => {
+const TechnologieCard = ({ technology, selectedTechnologies, setSelectedTechnologies }: TechnologieCardProps) => {
+    const isSelected = selectedTechnologies.some(
+        (selectedTechnology) => selectedTechnology.id === technology.id
+    );
     const handleAddToStack = () => {
         setSelectedTechnologies([...selectedTechnologies, technology]);
+        toast.success(`${technology.name} added to stack`)
     }
     return (
         <div className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-gray-100">
@@ -49,8 +54,15 @@ const TechnologieCard = ({ technology,selectedTechnologies,setSelectedTechnologi
             </div>
 
             <div className="flex justify-center">
-                <button onClick={()=>handleAddToStack()} className="mt-4 w-full bg-black hover:bg-gray-800 hover:scale-[1.02] text-white font-bold py-2 px-4 rounded-lg transition-all duration-300">
-                    Add to Stack
+                <button
+                    onClick={handleAddToStack}
+                    disabled={isSelected}
+                    className={`mt-4 w-full text-white font-bold py-2 px-4 rounded-lg transition-all duration-300 ${isSelected
+                            ? "bg-gray-400 cursor-not-allowed"
+                            : "bg-black hover:bg-gray-800 hover:scale-[1.02]"
+                        }`}
+                >
+                    {isSelected ? "Added" : "Add to Stack"}
                 </button>
             </div>
 
