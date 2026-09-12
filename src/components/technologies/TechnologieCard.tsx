@@ -1,8 +1,15 @@
 
 import type ITechnology from '../../types/type';
 
-
-const TechnologieCard = ({ technology }: { technology: ITechnology }) => {
+interface TechnologieCardProps {
+    technology: ITechnology;
+    selectedTechnologies: ITechnology[];
+    setSelectedTechnologies: React.Dispatch<React.SetStateAction<ITechnology[]>>;
+}
+const TechnologieCard = ({ technology,selectedTechnologies,setSelectedTechnologies }: TechnologieCardProps) => {
+    const handleAddToStack = () => {
+        setSelectedTechnologies([...selectedTechnologies, technology]);
+    }
     return (
         <div className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-gray-100">
             <div>
@@ -42,11 +49,11 @@ const TechnologieCard = ({ technology }: { technology: ITechnology }) => {
             </div>
 
             <div className="flex justify-center">
-                <button className="mt-4 w-full bg-black hover:bg-gray-800 hover:scale-[1.02] text-white font-bold py-2 px-4 rounded-lg transition-all duration-300">
+                <button onClick={()=>handleAddToStack()} className="mt-4 w-full bg-black hover:bg-gray-800 hover:scale-[1.02] text-white font-bold py-2 px-4 rounded-lg transition-all duration-300">
                     Add to Stack
                 </button>
             </div>
-            
+
         </div>
     );
 }

@@ -1,17 +1,20 @@
-import { use } from "react";
+import { use, useState,} from "react";
 import type ITechnology from "../../types/type";
 
-import SelectedTechnology from "./SelectedTechnology";
+
 import Technologie from "./Technologie";
+import SelectedTechnology from "../selectedTechnology/SelectedTechnology";
 
 
 interface technologiesProps {
     technologiePromise: Promise<ITechnology[]>;
+
 }
 
 const Technologies = ({ technologiePromise }: technologiesProps) => {
 
     const technologies = use(technologiePromise);
+    const [selectedTechnologies, setSelectedTechnologies] = useState<ITechnology[]>([]);
 
     return (
         <div className="mt-12 container mx-auto">
@@ -19,8 +22,8 @@ const Technologies = ({ technologiePromise }: technologiesProps) => {
             <p>Pick one technology per category to build your ideal stack.</p>
             <div>
 
-                <Technologie technologies={technologies} />
-                <SelectedTechnology technologies={technologies} />
+                <Technologie technologies={technologies} selectedTechnologies={selectedTechnologies} setSelectedTechnologies={setSelectedTechnologies} />
+               <SelectedTechnology selectedTechnologies={selectedTechnologies} setSelectedTechnologies={setSelectedTechnologies} ></SelectedTechnology>
             </div>
         </div>
     );
