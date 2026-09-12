@@ -10,7 +10,7 @@ import Footer from './components/Footer';
 
 
 const technologieFetch = async (): Promise<ITechnology[]> => {
-  const response = await fetch('../public/technologies.json');
+  const response = await fetch('/technologies.json');
   const data = await response.json()
   return data;
 }

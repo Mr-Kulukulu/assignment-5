@@ -17,7 +17,7 @@ const Nav = () => {
       {/* Logo - Center */}
       <div className="flex justify-center">
         <img
-          src="/src/assets/logo-text.png"
+          src={Logo}
           alt="Logo"
           className="w-32"
         />
