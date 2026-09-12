@@ -1,4 +1,4 @@
-
+import BannerImage from "../assets/banner-stack.png";
 
 const Hero = () => {
     return (
@@ -35,7 +35,7 @@ const Hero = () => {
                 <div className="flex justify-center">
                     <img
                         className="w-full max-w-[400px] h-auto"
-                        src="/src/assets/banner-stack.png"
+                        src={BannerImage}
                         alt="Development stack"
                     />
                 </div>

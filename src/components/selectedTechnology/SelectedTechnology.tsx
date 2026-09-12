@@ -1,6 +1,7 @@
 import { type Dispatch } from "react";
 import type ITechnology from "../../types/type";
 import SelectedTechnologyCard from "./SelectedTechnologyCard";
+import { toast } from "react-toastify";
 
 interface ISelectedTechnology {
     technologies: ITechnology[];
@@ -8,7 +9,10 @@ interface ISelectedTechnology {
     setSelectedTechnologies: Dispatch<React.SetStateAction<ITechnology[]>>;
 }
 const SelectedTechnology = ({ selectedTechnologies, setSelectedTechnologies }: ISelectedTechnology) => {
-
+    const handleRemoveAll = () => {
+        setSelectedTechnologies([]);
+        toast.success("All technologies removed from stack")
+    };
     return (
 
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 max-w-md">
@@ -28,6 +32,7 @@ const SelectedTechnology = ({ selectedTechnologies, setSelectedTechnologies }: I
                 </div>
             )}
 
+
             {selectedTechnologies.map((selectedTechnology) => {
                 return (
                     <SelectedTechnologyCard
@@ -38,6 +43,16 @@ const SelectedTechnology = ({ selectedTechnologies, setSelectedTechnologies }: I
                     />
                 );
             })}
+            {selectedTechnologies.length > 0 && (
+                <div className="flex justify-center mt-5">
+                    <button
+                        onClick={handleRemoveAll}
+                        className="text-sm font-semibold text-red-500 hover:text-red-700 hover:bg-red-50 px-3 py-2 rounded-lg transition-all duration-200"
+                    >
+                        Remove All
+                    </button>
+                </div>
+            )}
         </div>
     );
 }

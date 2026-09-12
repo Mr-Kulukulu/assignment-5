@@ -1,4 +1,5 @@
 import { RxHamburgerMenu } from "react-icons/rx";
+import Logo from "../assets/logo-text.png";
 
 const Nav = () => {
     return (
@@ -40,7 +41,7 @@ const Nav = () => {
 
       {/* Logo */}
       <img
-        src="/src/assets/logo-text.png"
+        src={Logo}
         alt="Logo"
         className="w-32"
       />
