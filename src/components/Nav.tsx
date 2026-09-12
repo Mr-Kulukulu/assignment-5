@@ -1,22 +1,71 @@
+import { RxHamburgerMenu } from "react-icons/rx";
+
 const Nav = () => {
     return (
-        <div className=' py-2'>
-            <div className="flex justify-between items-center container mx-auto sticky top-0 z-50 ">
+        <div className="py-2">
+  <div className="container mx-auto">
 
-                <img src="/src/assets/logo-text.png" alt="Logo" />
-                <nav className="flex gap-4">
-                    <ul><a href="">Home</a></ul>
-                    <ul><a href="">Technologies</a></ul>
-                    <ul><a href="">Projects</a></ul>
-                    <ul><a href="">About</a></ul>
-                    <ul><a href="">Contact</a></ul>
-                </nav>
-                <div className="flex justify-center items-center gap-2">
-                    <button className="btn btn-ghost">Sign In</button>
-                    <button className="btn btn-active btn-secondary">Sign Up</button>
-                </div>
-            </div>
-        </div>
+    {/* Mobile Navbar */}
+    <div className="grid grid-cols-3 items-center sm:hidden">
+
+      {/* Hamburger - Left */}
+      <div className="flex justify-start">
+        <RxHamburgerMenu className="text-2xl" />
+      </div>
+
+      {/* Logo - Center */}
+      <div className="flex justify-center">
+        <img
+          src="/src/assets/logo-text.png"
+          alt="Logo"
+          className="w-32"
+        />
+      </div>
+
+      {/* Buttons - Right */}
+      <div className="flex justify-end gap-1">
+        <button className="btn btn-ghost btn-sm">
+          Sign In
+        </button>
+        <button className="btn btn-secondary btn-sm">
+          Sign Up
+        </button>
+      </div>
+
+    </div>
+
+
+    {/* Desktop Navbar */}
+    <div className="hidden sm:flex justify-between items-center">
+
+      {/* Logo */}
+      <img
+        src="/src/assets/logo-text.png"
+        alt="Logo"
+        className="w-32"
+      />
+
+      {/* Navigation */}
+      <nav>
+        <ul className="flex items-center gap-4">
+          <li><a href="">Home</a></li>
+          <li><a href="">Technologies</a></li>
+          <li><a href="">Projects</a></li>
+          <li><a href="">About</a></li>
+          <li><a href="">Contact</a></li>
+        </ul>
+      </nav>
+
+      {/* Buttons */}
+      <div className="flex items-center gap-2">
+        <button className="btn btn-ghost">Sign In</button>
+        <button className="btn btn-secondary">Sign Up</button>
+      </div>
+
+    </div>
+
+  </div>
+</div>
     );
 };
 
